@@ -11,6 +11,6 @@ func _physics_process(delta):
 	
 func update_pivot_angle():
 	rotation = parent.look_direction.angle()
-	print('Look direction: ', parent.look_direction)
-	print('Rotation: ', rotation)
+#	print('Look direction: ', parent.look_direction)
+#	print('Rotation: ', rotation)
 
