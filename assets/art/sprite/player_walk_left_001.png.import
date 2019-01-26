@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemyWalking_1.png-6687d7bfdf9d35beacd8755ce78b96ce.stex"
+path="res://.import/player_walk_left_001.png-ac98b75dfee8d04e17063b84575b51e1.stex"
 
 [deps]
 
-source_file="res://assets/art/enemyWalking_1.png"
-dest_files=[ "res://.import/enemyWalking_1.png-6687d7bfdf9d35beacd8755ce78b96ce.stex" ]
+source_file="res://assets/art/sprite/player_walk_left_001.png"
+dest_files=[ "res://.import/player_walk_left_001.png-ac98b75dfee8d04e17063b84575b51e1.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

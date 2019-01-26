@@ -1,18 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://RollingPlayer.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/playerGrey_walk1.png" type="Texture" id=2]
-[ext_resource path="res://assets/art/playerGrey_walk2.png" type="Texture" id=3]
-[ext_resource path="res://Pivot.gd" type="Script" id=4]
+[ext_resource path="res://assets/art/sprite/player_walk_left_000.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/sprite/player_walk_left_001.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/sprite/player_walk_left_002.png" type="Texture" id=4]
+[ext_resource path="res://Pivot.gd" type="Script" id=5]
+[ext_resource path="res://assets/art/UI/aim_cursor.png" type="Texture" id=6]
+[ext_resource path="res://Cursor.gd" type="Script" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk",
-"speed": 5.0
+"name": "walk_left",
+"speed": 10.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 
@@ -20,7 +24,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="Area2D"]
+[node name="RollingPlayer" type="Area2D" index="0"]
 
 position = Vector2( -20.7497, -177.768 )
 input_pickable = true
@@ -31,26 +35,29 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-
+_sections_unfolded = [ "Transform" ]
 speed = 300
 roll_speed = 750
 roll_time = 0.125
 roll_delay = 0.5
 allow_controller = true
 controller_deadzone = 0.15
+cursor_radius = 300.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 position = Vector2( -1.07145, 0.401791 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
-animation = "walk"
+animation = "walk_left"
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+visible = false
 position = Vector2( -1.07144, 1.0581 )
 scale = Vector2( 1, 1.05794 )
 shape = SubResource( 2 )
@@ -68,7 +75,7 @@ autostart = false
 [node name="Pivot" type="Position2D" parent="." index="3"]
 
 position = Vector2( -1.61761, 1.61749 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -106,6 +113,13 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Smoothing", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Cursor" type="Sprite" parent="." index="4"]
+
+visible = false
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]
 
