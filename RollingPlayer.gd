@@ -47,6 +47,8 @@ func _process(delta):
 		if Input.is_action_pressed("ui_down"):
 			velocity.y += 1
 
+	look_direction = velocity
+	
 	# if directions are given
 	if velocity.length() > 0 && !is_rolling:
 		# are they starting a roll?
@@ -60,9 +62,9 @@ func _process(delta):
 				velocity = velocity.normalized() * speed
 			else:
 				velocity = velocity * speed
-			$AnimatedSprite.play()
+			$Sprite/AnimationPlayer.play()
 	else:
-		$AnimatedSprite.stop()
+		$Sprite/AnimationPlayer.stop()
 
 	if is_rolling:
 		position += roll_velocity * delta
