@@ -15,7 +15,10 @@ var can_roll = null
 var Roll_Timer = null
 var Roll_Delay_Timer = null
 var roll_velocity = null
+var collision_bounds_set = false
+var bounds
 var look_direction = Vector2()
+
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -29,6 +32,14 @@ func _ready():
 
 	can_roll = true
 	is_rolling = false
+
+func set_bounds(bounds_vector):
+	collision_bounds_set = true
+	bounds = bounds_vector
+	$"Pivot/CameraOffset/Camera2D".limit_top = 0
+	$"Pivot/CameraOffset/Camera2D".limit_left = 0
+	$"Pivot/CameraOffset/Camera2D".limit_right = bounds.x
+	$"Pivot/CameraOffset/Camera2D".limit_bottom = bounds.y
 
 func _process(delta):
 
@@ -48,7 +59,7 @@ func _process(delta):
 			velocity.y += 1
 
 	look_direction = velocity
-	
+
 	# if directions are given
 	if velocity.length() > 0 && !is_rolling:
 		# are they starting a roll?
@@ -70,15 +81,16 @@ func _process(delta):
 		position += roll_velocity * delta
 	else:
 		position += velocity * delta
-	
+
 	if velocity.x > 0:
 		$AnimatedSprite.flip_h = true
 	if velocity.x < 0:
 		$AnimatedSprite.flip_h = false
-		
-	position.x = clamp(position.x, 0, screensize.x)
-	position.y = clamp(position.y, 0, screensize.y)
-	
+
+	if collision_bounds_set:
+		position.x = clamp(position.x, 0, bounds.x)
+		position.y = clamp(position.y, 0, bounds.y)
+
 	if allow_controller:
 		look_direction = get_right_stick() * cursor_radius
 	else:
@@ -119,4 +131,3 @@ func check_deadzone(direction):
 	if abs(direction.y) < controller_deadzone:
 		direction.y = 0
 	return direction
-	
