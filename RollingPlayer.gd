@@ -62,14 +62,19 @@ func _process(delta):
 				velocity = velocity.normalized() * speed
 			else:
 				velocity = velocity * speed
-			$Sprite/AnimationPlayer.play()
+			$AnimatedSprite.play()
 	else:
-		$Sprite/AnimationPlayer.stop()
+		$AnimatedSprite.stop()
 
 	if is_rolling:
 		position += roll_velocity * delta
 	else:
 		position += velocity * delta
+	
+	if velocity.x > 0:
+		$AnimatedSprite.flip_h = true
+	if velocity.x < 0:
+		$AnimatedSprite.flip_h = false
 		
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
