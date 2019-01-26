@@ -13,6 +13,8 @@ var Roll_Timer = null
 var Roll_Delay_Timer = null
 var roll_velocity = null
 
+var look_direction = Vector2(1, 0)
+
 func _ready():
 	screensize = get_viewport_rect().size
 	Roll_Timer = $RollTimer
@@ -38,6 +40,8 @@ func _process(delta):
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += 1
 
+	look_direction = velocity
+	
 	# if directions are given
 	if velocity.length() > 0 && !is_rolling:
 		# are they starting a roll?
