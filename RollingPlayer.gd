@@ -6,6 +6,7 @@ export (float) var roll_time
 export (float) var roll_delay
 export (bool) var allow_controller
 export (float) var controller_deadzone
+export (float) var cursor_radius
 
 var screensize
 
@@ -15,10 +16,12 @@ var Roll_Timer = null
 var Roll_Delay_Timer = null
 var roll_velocity = null
 
+
 var collision_bounds_set = false
 var bounds
 
-var look_direction = Vector2(1, 0)
+var look_direction = Vector2()
+
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -47,22 +50,16 @@ func _process(delta):
 
 	if allow_controller:
 		#   Joypad controls
-		var x = Input.get_joy_axis(0, JOY_AXIS_0)
-		var y = Input.get_joy_axis(0, JOY_AXIS_1)
-	
-		if abs(x) > controller_deadzone:
-			velocity.x = x
-		if abs(y) > controller_deadzone:
-			velocity.y = y
-
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
+		velocity = get_left_stick()
+	else:
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
 
 	look_direction = velocity
 	
@@ -82,16 +79,30 @@ func _process(delta):
 			$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-	
 
 	if is_rolling:
 		position += roll_velocity * delta
 	else:
 		position += velocity * delta
+	
+	if velocity.x > 0:
+		$AnimatedSprite.flip_h = true
+	if velocity.x < 0:
+		$AnimatedSprite.flip_h = false
 		
 	if collision_bounds_set:
 		position.x = clamp(position.x, 0, bounds.x)
 		position.y = clamp(position.y, 0, bounds.y)
+	
+	if allow_controller:
+		look_direction = get_right_stick() * cursor_radius
+	else:
+		look_direction = get_viewport().get_mouse_position() - position
+		if look_direction.length() > cursor_radius:
+			look_direction = look_direction.normalized() * cursor_radius
+
+	$Cursor.set_position(look_direction)
+	$Cursor.set_visible(!(look_direction.x == 0 and look_direction.y == 0))
 
 
 func start_roll():
@@ -106,3 +117,21 @@ func _on_RollTimer_timeout():
 
 func on_roll_ready():
 	can_roll = true
+
+func get_left_stick():
+	var x = Input.get_joy_axis(0, JOY_AXIS_0)
+	var y = Input.get_joy_axis(0, JOY_AXIS_1)
+	return check_deadzone(Vector2(x, y))
+
+func get_right_stick():
+	var x = Input.get_joy_axis(0, JOY_AXIS_2)
+	var y = Input.get_joy_axis(0, JOY_AXIS_3)
+	return check_deadzone(Vector2(x, y))
+
+func check_deadzone(direction):
+	if abs(direction.x) < controller_deadzone:
+		direction.x = 0
+	if abs(direction.y) < controller_deadzone:
+		direction.y = 0
+	return direction
+	
