@@ -15,6 +15,9 @@ var Roll_Timer = null
 var Roll_Delay_Timer = null
 var roll_velocity = null
 
+var collision_bounds_set = false
+var bounds
+
 var look_direction = Vector2(1, 0)
 
 func _ready():
@@ -29,6 +32,14 @@ func _ready():
 
 	can_roll = true
 	is_rolling = false
+	
+func set_bounds(bounds_vector):
+	collision_bounds_set = true
+	bounds = bounds_vector
+	$"Pivot/CameraOffset/Camera2D".limit_top = 0
+	$"Pivot/CameraOffset/Camera2D".limit_left = 0
+	$"Pivot/CameraOffset/Camera2D".limit_right = bounds.x
+	$"Pivot/CameraOffset/Camera2D".limit_bottom = bounds.y
 
 func _process(delta):
 
@@ -78,8 +89,9 @@ func _process(delta):
 	else:
 		position += velocity * delta
 		
-	position.x = clamp(position.x, 0, screensize.x)
-	position.y = clamp(position.y, 0, screensize.y)
+	if collision_bounds_set:
+		position.x = clamp(position.x, 0, bounds.x)
+		position.y = clamp(position.y, 0, bounds.y)
 
 
 func start_roll():

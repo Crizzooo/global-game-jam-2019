@@ -2,4 +2,6 @@ extends Node
 
 
 func _ready():
-	pass
+	var level_size = $"Level/world-background".texture.get_size()
+	$RollingPlayer.set_bounds(level_size)
+	

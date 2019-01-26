@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://RollingPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/playerGrey_walk1.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/playerGrey_walk2.png" type="Texture" id=3]
 [ext_resource path="res://Pivot.gd" type="Script" id=4]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -22,7 +23,7 @@ height = 10.1704
 
 [node name="RollingPlayer" type="Area2D"]
 
-position = Vector2( -20.7497, -177.768 )
+position = Vector2( 150, 50 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -31,7 +32,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 speed = 300
 roll_speed = 750
 roll_time = 0.125
@@ -84,8 +88,8 @@ anchor_mode = 1
 rotating = false
 current = true
 zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
+limit_left = -1000000
+limit_top = -1000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
@@ -102,10 +106,12 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-_sections_unfolded = [ "Drag Margin", "Editor", "Smoothing", "Transform" ]
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Weapon" parent="." index="4" instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]
 
