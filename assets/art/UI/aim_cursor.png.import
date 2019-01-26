@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aim_cursor.png-a9904e0b9d481af5fa58c4bbf9525ec2.stex"
+path="res://.import/aim_cursor.png-8aa0e8b2beaff91bfe88c0ede99e0194.stex"
 
 [deps]
 
-source_file="res://assets/art/UI/aim_cursor.png"
-dest_files=[ "res://.import/aim_cursor.png-a9904e0b9d481af5fa58c4bbf9525ec2.stex" ]
+source_file="res://assets/art/ui/aim_cursor.png"
+dest_files=[ "res://.import/aim_cursor.png-8aa0e8b2beaff91bfe88c0ede99e0194.stex" ]
 
 [params]
 
