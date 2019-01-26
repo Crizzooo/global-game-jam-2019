@@ -3,7 +3,9 @@ extends Node2D
 export (int) var speed
 export (int) var roll_speed
 export (float) var roll_time
-export (int) var roll_delay
+export (float) var roll_delay
+export (bool) var allow_controller
+export (float) var controller_deadzone
 
 var screensize
 
@@ -31,6 +33,17 @@ func _ready():
 func _process(delta):
 
 	var velocity = Vector2()
+
+	if allow_controller:
+		#   Joypad controls
+		var x = Input.get_joy_axis(0, JOY_AXIS_0)
+		var y = Input.get_joy_axis(0, JOY_AXIS_1)
+	
+		if abs(x) > controller_deadzone:
+			velocity.x = x
+		if abs(y) > controller_deadzone:
+			velocity.y = y
+
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -48,11 +61,17 @@ func _process(delta):
 		if (Input.is_action_just_pressed('roll') && can_roll):
 			start_roll()
 			roll_velocity = velocity * roll_speed
+		elif is_rolling:
+			roll_velocity = velocity * roll_speed
 		else:
-			velocity = velocity.normalized() * speed
+			if abs(velocity.length()) > 1:
+				velocity = velocity.normalized() * speed
+			else:
+				velocity = velocity * speed
 			$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
+	
 
 	if is_rolling:
 		position += roll_velocity * delta
