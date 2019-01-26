@@ -31,9 +31,11 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 speed = 300
-roll_speed = 450
-roll_time = 1.0
-roll_delay = 1
+roll_speed = 750
+roll_time = 0.125
+roll_delay = 0.5
+allow_controller = true
+controller_deadzone = 0.15
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
