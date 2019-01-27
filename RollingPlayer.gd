@@ -60,7 +60,7 @@ func _process(delta):
 		if Input.is_action_pressed("ui_down"):
 			velocity.y += 1
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		var cursor_pos = $Cursor.get_global_position()
 		var player_pos = global_position
 		$Weapon.fire_bullet(global_position, cursor_pos)

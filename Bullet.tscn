@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
-[ext_resource path="res://assets/bullet.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/Sprite/bullet_round.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 15.6246
 
 [sub_resource type="ParticlesMaterial" id=2]
 
@@ -48,7 +48,7 @@ anim_loop = false
 
 [node name="Bullet" type="RigidBody2D"]
 
-position = Vector2( 135.063, 88.9637 )
+position = Vector2( 135.063, 88.795 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -75,11 +75,10 @@ BULLET_SPEED = 500
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-rotation = 0.785398
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 2 )
 flip_h = true
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -88,6 +87,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="2"]
 
+visible = false
 emitting = true
 amount = 8
 lifetime = 1.0
