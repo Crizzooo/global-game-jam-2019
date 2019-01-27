@@ -7,6 +7,7 @@
 
 custom_solver_bias = 0.0
 radius = 15.6246
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="ParticlesMaterial" id=2]
 
@@ -50,8 +51,8 @@ anim_loop = false
 
 position = Vector2( 135.063, 88.795 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 4
+collision_mask = 26
 mode = 3
 mass = 1.0
 friction = 1.0
@@ -68,9 +69,8 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Collision" ]
+life_time = 0.2
 BULLET_SPEED = 500
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -83,7 +83,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
-_sections_unfolded = [ "Material", "Visibility" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="2"]
 

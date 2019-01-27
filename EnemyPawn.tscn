@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://RollingPlayer.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/sprite/player_walk_left000.png" type="Texture" id=2]
-[ext_resource path="res://assets/art/sprite/player_walk_left001.png" type="Texture" id=3]
-[ext_resource path="res://assets/art/sprite/player_walk_left002.png" type="Texture" id=4]
+[ext_resource path="res://EnemyPawn.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/sprite/player_mouse_left000.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/sprite/player_mouse_left001.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/sprite/player_mouse_left002.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/ui/aim_cursor.png" type="Texture" id=5]
 [ext_resource path="res://Cursor.gd" type="Script" id=6]
-[ext_resource path="res://Pivot.gd" type="Script" id=7]
-[ext_resource path="res://Weapon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -17,6 +16,7 @@ animations = [ {
 "name": "walk_left",
 "speed": 10.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 
@@ -24,7 +24,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="Area2D"]
+[node name="EnemyPawn" type="Area2D" index="0"]
 
 position = Vector2( 150, 50 )
 input_pickable = true
@@ -32,8 +32,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 16
-collision_mask = 12
+collision_layer = 2
+collision_mask = 4
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
@@ -63,6 +63,7 @@ __meta__ = {
 
 [node name="Cursor" type="Sprite" parent="." index="1"]
 
+visible = false
 position = Vector2( -150, -50 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
@@ -83,51 +84,7 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Pivot" type="Position2D" parent="." index="4"]
-
-position = Vector2( -1.61761, 1.61749 )
-script = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CameraOffset" type="Position2D" parent="Pivot" index="0"]
-
-position = Vector2( 50, 0.207691 )
-scale = Vector2( 0.835515, 1.22187 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
-
-[node name="Camera2D" type="Camera2D" parent="Pivot/CameraOffset" index="0"]
-
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -1000000
-limit_top = -1000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-smoothing_enabled = true
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.1
-drag_margin_top = 0.1
-drag_margin_right = 0.1
-drag_margin_bottom = 0.1
-editor_draw_screen = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing", "Transform" ]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Weapon" parent="." index="5" instance=ExtResource( 8 )]
+[node name="Weapon" parent="." index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -0.670822, 26.118 )
 scale = Vector2( 7, 7 )
