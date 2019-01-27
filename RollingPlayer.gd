@@ -20,6 +20,7 @@ var collision_bounds_set = false
 var bounds
 var look_direction = Vector2()
 var hp
+var sfx_playing = false
 
 
 func _ready():
@@ -72,6 +73,13 @@ func _process(delta):
 		var cursor_pos = $Cursor.get_global_position()
 		var player_pos = global_position
 		$Weapon.fire_bullet(global_position, cursor_pos)
+		if !sfx_playing:
+			$AudioStreamPlayer2D.play()
+			sfx_playing = true
+	else:
+		if sfx_playing:
+			sfx_playing = false
+			$AudioStreamPlayer2D.stop()
 
 	look_direction = velocity
 	$Weapon.rotation = Vector2(-1,0).angle_to($Cursor.position)
