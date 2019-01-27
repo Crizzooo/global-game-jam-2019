@@ -45,7 +45,7 @@ roll_time = 0.125
 roll_delay = 0.5
 allow_controller = true
 controller_deadzone = 0.15
-cursor_radius = null
+cursor_radius = 0.3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

@@ -32,6 +32,8 @@ func _ready():
 
 	can_roll = true
 	is_rolling = false
+	
+	look_direction = position + Vector2(1, 0) * cursor_radius
 
 func set_bounds(bounds_vector):
 	collision_bounds_set = true
@@ -57,6 +59,11 @@ func _process(delta):
 			velocity.y -= 1
 		if Input.is_action_pressed("ui_down"):
 			velocity.y += 1
+
+	if Input.is_action_just_pressed("shoot"):
+		var cursor_pos = $Cursor.get_global_position()
+		var player_pos = global_position
+		$Weapon.fire_bullet(global_position, cursor_pos)
 
 	look_direction = velocity
 
@@ -98,8 +105,9 @@ func _process(delta):
 		if look_direction.length() > cursor_radius:
 			look_direction = look_direction.normalized() * cursor_radius
 
-	$Cursor.set_position(look_direction)
-	$Cursor.set_visible(!(look_direction.x == 0 and look_direction.y == 0))
+	if !(look_direction.x == 0 and look_direction.y == 0):
+        $Cursor.set_position(look_direction)
+
 
 
 func start_roll():

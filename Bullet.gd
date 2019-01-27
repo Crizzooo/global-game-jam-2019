@@ -4,15 +4,17 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 export var BULLET_SPEED = 100
-var initial_velocity = Vector2()
+var direction
 
 func _ready(initial_velocity):
 	pass
 
-func init_direction(start_vel):
-	rotation = start_vel.angle()
-	initial_velocity = start_vel.normalized() * BULLET_SPEED
+func init_direction(start_position, target_position):
+	position = start_position
+	rotation = start_position.angle_to(target_position)
+	direction = target_position - start_position
+	direction = direction.normalized()
 
 func _process(delta):
-	position += initial_velocity * delta
+	position += direction * delta * BULLET_SPEED
 

@@ -1,12 +1,15 @@
 extends Node
 
-var Bullet = load("res://Bullet.tscn")
+
 
 func _ready():
-	fire_bullet()
 	pass
 
-func fire_bullet():
+func fire_bullet(start_position, target_pos):
+	var Bullet = preload("res://Bullet.tscn")
 	var bullet_instance = Bullet.instance()
-	bullet_instance.init_direction(Vector2(1, 0))
-	add_child(bullet_instance)
+	# start from player position 
+	# shoot towards target position
+	print('what is bullet instance', bullet_instance)
+	bullet_instance.init_direction(start_position, target_pos)
+	get_tree().get_root().add_child(bullet_instance)

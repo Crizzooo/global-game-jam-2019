@@ -22,7 +22,6 @@ cursor_radius = 200.0
 
 [node name="Level" type="Area2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 2099.83, 1042.07 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
