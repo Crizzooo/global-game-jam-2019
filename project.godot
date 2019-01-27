@@ -45,6 +45,14 @@ shoot=[ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
  ]
 
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="bullets"
+2d_physics/layer_4="walls"
+2d_physics/layer_5="player"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

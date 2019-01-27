@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_walk_left_001.png-ac98b75dfee8d04e17063b84575b51e1.stex"
+path="res://.import/gun_assualt.alpha.png-27e152099be78b092aaa178ffc47792b.stex"
 
 [deps]
 
-source_file="res://assets/art/sprite/player_walk_left_001.png"
-dest_files=[ "res://.import/player_walk_left_001.png-ac98b75dfee8d04e17063b84575b51e1.stex" ]
+source_file="res://assets/art/sprite/gun_assualt.alpha.png"
+dest_files=[ "res://.import/gun_assualt.alpha.png-27e152099be78b092aaa178ffc47792b.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

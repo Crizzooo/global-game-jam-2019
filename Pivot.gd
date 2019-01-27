@@ -14,7 +14,6 @@ func update_pivot_angle():
 		print('Look direction: ', parent.look_direction)
 		print('Rotation: ', rotation)
 	
-	
 	var camera_look_dir = parent.look_direction
 	clamp(camera_look_dir.x, -1, 1)
 	clamp(camera_look_dir.y, -1, 1)

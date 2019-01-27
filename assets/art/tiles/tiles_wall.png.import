@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_walk_left_000.png-d3576c1d65327b15ab3eee330ab16f68.stex"
+path="res://.import/tiles_wall.png-44d8d3ed7a3b93376b9859e68a504456.stex"
 
 [deps]
 
-source_file="res://assets/art/sprite/player_walk_left_000.png"
-dest_files=[ "res://.import/player_walk_left_000.png-d3576c1d65327b15ab3eee330ab16f68.stex" ]
+source_file="res://assets/art/tiles/tiles_wall.png"
+dest_files=[ "res://.import/tiles_wall.png-44d8d3ed7a3b93376b9859e68a504456.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
