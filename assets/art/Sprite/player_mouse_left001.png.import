@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_mouse_left001.png-6fa8afe4ae859ad61895ca77db88a591.stex"
+path="res://.import/player_mouse_left001.png-2de74beb6c86950c8bb87c1de512f28a.stex"
 
 [deps]
 
-source_file="res://assets/art/Sprite/player_mouse_left001.png"
-dest_files=[ "res://.import/player_mouse_left001.png-6fa8afe4ae859ad61895ca77db88a591.stex" ]
+source_file="res://assets/art/sprite/player_mouse_left001.png"
+dest_files=[ "res://.import/player_mouse_left001.png-2de74beb6c86950c8bb87c1de512f28a.stex" ]
 
 [params]
 

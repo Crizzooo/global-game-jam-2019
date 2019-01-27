@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet_round.png-adc8eae4b742ef6f240c3051dc952728.stex"
+path="res://.import/bullet_round.png-15da271c6680a2ea217a6f79f8b49091.stex"
 
 [deps]
 
-source_file="res://assets/art/Sprite/bullet_round.png"
-dest_files=[ "res://.import/bullet_round.png-adc8eae4b742ef6f240c3051dc952728.stex" ]
+source_file="res://assets/art/sprite/bullet_round.png"
+dest_files=[ "res://.import/bullet_round.png-15da271c6680a2ea217a6f79f8b49091.stex" ]
 
 [params]
 

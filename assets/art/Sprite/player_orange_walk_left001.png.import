@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_orange_walk_left001.png-661f04d64ea83720c0261e305117b4b3.stex"
+path="res://.import/player_orange_walk_left001.png-17e3294e84580c7feb1d3b1ff1f272b5.stex"
 
 [deps]
 
-source_file="res://assets/art/Sprite/player_orange_walk_left001.png"
-dest_files=[ "res://.import/player_orange_walk_left001.png-661f04d64ea83720c0261e305117b4b3.stex" ]
+source_file="res://assets/art/sprite/player_orange_walk_left001.png"
+dest_files=[ "res://.import/player_orange_walk_left001.png-17e3294e84580c7feb1d3b1ff1f272b5.stex" ]
 
 [params]
 
