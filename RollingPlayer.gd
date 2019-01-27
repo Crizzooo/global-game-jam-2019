@@ -101,9 +101,8 @@ func _process(delta):
 	if allow_controller:
 		look_direction = get_right_stick() * cursor_radius
 	else:
-		look_direction = get_viewport().get_mouse_position() - position
-		if look_direction.length() > cursor_radius:
-			look_direction = look_direction.normalized() * cursor_radius
+		look_direction =  get_global_mouse_position() - global_position
+		look_direction = look_direction.clamped(cursor_radius)
 
 	if !(look_direction.x == 0 and look_direction.y == 0):
         $Cursor.set_position(look_direction)

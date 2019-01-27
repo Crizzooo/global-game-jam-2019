@@ -24,7 +24,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="Area2D"]
+[node name="RollingPlayer" type="Area2D" index="0"]
 
 position = Vector2( 150, 50 )
 input_pickable = true
@@ -43,7 +43,7 @@ speed = 300
 roll_speed = 750
 roll_time = 0.125
 roll_delay = 0.5
-allow_controller = true
+allow_controller = false
 controller_deadzone = 0.15
 cursor_radius = 0.3
 

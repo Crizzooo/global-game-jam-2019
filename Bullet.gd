@@ -16,5 +16,5 @@ func init_direction(start_position, target_position):
 	direction = direction.normalized()
 
 func _process(delta):
-	position += direction * delta * BULLET_SPEED
+	global_position += direction * delta * BULLET_SPEED
 
