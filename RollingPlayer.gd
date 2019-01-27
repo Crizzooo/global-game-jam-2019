@@ -114,9 +114,11 @@ func _process(delta):
 		look_direction =  get_global_mouse_position() - global_position
 		look_direction = look_direction.clamped(cursor_radius)
 
-	#if !(look_direction.x == 0 and look_direction.y == 0):
-     #   $Cursor.set_position(look_direction)
-	$Cursor.global_position = get_global_mouse_position()
+	if !(look_direction.x == 0 and look_direction.y == 0):
+		var tmp_pos = look_direction
+		tmp_pos.x *= scale.x
+		$Cursor.set_position(tmp_pos)
+	#$Cursor.global_position = get_global_mouse_position()
 
 
 
