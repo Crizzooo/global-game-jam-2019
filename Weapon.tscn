@@ -3,7 +3,7 @@
 [ext_resource path="res://Weapon.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/sprite/gun_assualt.png" type="Texture" id=2]
 
-[node name="Weapon" type="Node2D"]
+[node name="Weapon" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
@@ -16,7 +16,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="BulletTarget" type="Position2D" parent="." index="1"]
 
-position = Vector2( -4.80989, -0.883868 )
+position = Vector2( -9.36965, -0.860953 )
 z_index = 1
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 

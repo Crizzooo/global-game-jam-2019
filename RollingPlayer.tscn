@@ -29,14 +29,9 @@ height = 10.1704
 
 position = Vector2( 150, 50 )
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
 collision_layer = 16
 collision_mask = 12
-audio_bus_override = false
-audio_bus_name = "Master"
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
@@ -50,6 +45,7 @@ allow_controller = true
 controller_deadzone = 0.15
 cursor_radius = 0.3
 maxHP = 10
+pawn_tag = 0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
