@@ -25,7 +25,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="Area2D" index="0"]
+[node name="RollingPlayer" type="KinematicBody2D"]
 
 position = Vector2( 150, 50 )
 input_pickable = true

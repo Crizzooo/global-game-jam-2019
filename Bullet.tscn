@@ -47,31 +47,18 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="Bullet" type="RigidBody2D" index="0"]
+[node name="Bullet" type="KinematicBody2D"]
 
 position = Vector2( 135.063, 88.795 )
 input_pickable = false
 collision_layer = 4
-collision_mask = 30
-mode = 3
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 3
-contact_monitor = true
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
+collision_mask = 26
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "collision" ]
 life_time = 0.2
 BULLET_SPEED = 500
+damage = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
