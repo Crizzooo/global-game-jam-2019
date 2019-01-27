@@ -8,7 +8,7 @@ export (bool) var allow_controller
 export (float) var controller_deadzone
 export (float) var cursor_radius
 export (int) var maxHP = 10
-
+export (int) var pawn_tag = 1
 
 var screensize
 
@@ -24,7 +24,14 @@ var hp
 
 var player
 
-
+func get_hit(bullet_tag, damage):
+	if bullet_tag == pawn_tag:
+		return false
+	hp -= damage
+	print(hp)
+	if hp <= 0:
+		get_parent().remove_child(self)
+	return true
 func _ready():
 	screensize = get_viewport_rect().size
 	Roll_Timer = $RollTimer
@@ -68,7 +75,7 @@ func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		var cursor_pos = $Cursor.get_global_position()
 		var player_pos = global_position
-		$Weapon.fire_bullet(global_position, cursor_pos)
+#		$Weapon.fire_bullet(global_position, cursor_pos)
 
 	look_direction = velocity
 	$Weapon.rotation = Vector2(-1,0).angle_to($Cursor.position)

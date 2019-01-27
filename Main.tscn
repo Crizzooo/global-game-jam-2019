@@ -10,21 +10,25 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.231, 9.44193 )
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="EnemyPawn" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 891.395, 479.436 )
+pawn_tag = 1
 
 [node name="RollingPlayer" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 345.176, 326.142 )
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 speed = 500
 roll_speed = 800
-allow_controller = true
+allow_controller = false
 cursor_radius = 200.0
+pawn_tag = 0
 
 [node name="Level" type="Area2D" parent="." index="2"]
 

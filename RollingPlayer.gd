@@ -8,6 +8,7 @@ export (bool) var allow_controller
 export (float) var controller_deadzone
 export (float) var cursor_radius
 export (int) var maxHP = 10
+export (int) var pawn_tag = 0
 
 var screensize
 
@@ -22,6 +23,14 @@ var look_direction = Vector2()
 var hp
 var sfx_playing = false
 
+func get_hit(bullet_tag, damage):
+	if bullet_tag == pawn_tag:
+		return false
+	hp -= damage
+	print(hp)
+	if hp <= 0:
+		get_parent().remove_child(self)
+	return true
 
 func _ready():
 	screensize = get_viewport_rect().size
