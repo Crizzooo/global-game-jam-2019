@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/art/tiles/tiles.png" type="Texture" id=1]
+
+[node name="FloorTileDef" type="Node"]
+
+[node name="Floor1" type="Sprite" parent="." index="0"]
+
+position = Vector2( 14.3834, 12.3669 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 36.7275, 12.4825 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor3" type="Sprite" parent="." index="2"]
+
+position = Vector2( 61.7708, 11.8851 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor4" type="Sprite" parent="." index="3"]
+
+position = Vector2( 86.8177, 11.8424 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor5" type="Sprite" parent="." index="4"]
+
+position = Vector2( 110.049, 12.1998 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor6" type="Sprite" parent="." index="5"]
+
+position = Vector2( 131.613, 12.5572 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Floor7" type="Sprite" parent="." index="6"]
+
+position = Vector2( 154.726, 11.2467 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+

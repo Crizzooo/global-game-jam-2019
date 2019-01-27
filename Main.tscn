@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://EnemyPawn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://RollingPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/world-background.jpg" type="Texture" id=4]
+[ext_resource path="res://FloorTiles.tres" type="TileSet" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.231, 9.44193 )
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -23,12 +24,11 @@ position = Vector2( 891.395, 479.436 )
 position = Vector2( 345.176, 326.142 )
 speed = 500
 roll_speed = 800
-allow_controller = true
 cursor_radius = 200.0
 
 [node name="Level" type="Area2D" parent="." index="2"]
 
-position = Vector2( 2098.62, 1042.07 )
+position = Vector2( 2080, 1040 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -36,20 +36,45 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="world-background" type="Sprite" parent="Level" index="0"]
 
+visible = false
 z_index = -1
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level" index="1"]
 
 position = Vector2( 4.09505, -0.71553 )
 scale = Vector2( 205.677, 110.358 )
 shape = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="Level" index="2"]
+
+scale = Vector2( 5, 5 )
+z_index = -1
+mode = 0
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Cell", "Transform", "Visibility", "Z Index" ]
 
 
