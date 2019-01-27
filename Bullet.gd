@@ -18,8 +18,17 @@ func init_direction(start_position, target_position):
 	direction = direction.normalized()
 
 func _process(delta):
-	global_position += direction * delta * BULLET_SPEED
 	life_timer += delta
 	if life_timer > life_time:
 		get_parent().remove_child(self)
 
+func _physics_process(delta):
+	global_position += direction * delta * BULLET_SPEED
+	#prnit(get_colliding_bodies().size())
+
+func body_shape_entered (body_id, body, body_shape, local_shape ):
+	print("body_shape_entered")
+	
+func body_entered(body):
+	print("body_entered")
+	print(body)

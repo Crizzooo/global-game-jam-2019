@@ -129,8 +129,6 @@ func _process(delta):
 		$Cursor.set_position(tmp_pos)
 	#$Cursor.global_position = get_global_mouse_position()
 
-
-
 func start_roll():
 	can_roll = false
 	is_rolling = true
