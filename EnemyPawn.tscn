@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://EnemyPawn.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/sprite/player_mouse_left000.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/sprite/player_mouse_left001.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/sprite/player_mouse_left002.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ui/aim_cursor.png" type="Texture" id=5]
+[ext_resource path="res://Cursor.gd" type="Script" id=6]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 10.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 27.1987
+height = 10.1704
+
+[node name="EnemyPawn" type="Area2D" index="0"]
+
+position = Vector2( 150, 50 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 300
+roll_speed = 750
+roll_time = 0.125
+roll_delay = 0.5
+allow_controller = false
+controller_deadzone = 0.15
+cursor_radius = 0.3
+maxHP = 10
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( -1.07145, 0.401791 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 1 )
+animation = "walk_left"
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cursor" type="Sprite" parent="." index="1"]
+
+visible = false
+position = Vector2( -150, -50 )
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( -1.07144, 1.0581 )
+scale = Vector2( 1, 1.05794 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RollTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="Weapon" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( -0.670822, 26.118 )
+scale = Vector2( 7, 7 )
+
+[connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]
+
+

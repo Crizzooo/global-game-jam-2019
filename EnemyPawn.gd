@@ -9,6 +9,7 @@ export (float) var controller_deadzone
 export (float) var cursor_radius
 export (int) var maxHP = 10
 
+
 var screensize
 
 var is_rolling = null
@@ -20,6 +21,8 @@ var collision_bounds_set = false
 var bounds
 var look_direction = Vector2()
 var hp
+
+var player
 
 
 func _ready():
@@ -34,12 +37,15 @@ func _ready():
 
 	can_roll = true
 	is_rolling = false
-	
+
 	look_direction = position + Vector2(1, 0) * cursor_radius
 	self.add_child($Weapon)
 	hp = maxHP
-	print(self.get_path())
-
+	
+	# get player
+	player = get_node("/root/Main/RollingPlayer")
+	
+	#print(player.global_position)
 
 func set_bounds(bounds_vector):
 	collision_bounds_set = true
@@ -58,15 +64,6 @@ func _process(delta):
 	if allow_controller:
 		#   Joypad controls
 		velocity = get_left_stick()
-	else:
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += 1
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= 1
-		if Input.is_action_pressed("ui_up"):
-			velocity.y -= 1
-		if Input.is_action_pressed("ui_down"):
-			velocity.y += 1
 
 	if Input.is_action_pressed("shoot"):
 		var cursor_pos = $Cursor.get_global_position()
@@ -118,6 +115,7 @@ func _process(delta):
 	if !(look_direction.x == 0 and look_direction.y == 0):
 		var tmp_pos = look_direction
 		tmp_pos.x *= scale.x
+		#tmp_pos.y *= scale.x
 		$Cursor.set_position(tmp_pos)
 	#$Cursor.global_position = get_global_mouse_position()
 

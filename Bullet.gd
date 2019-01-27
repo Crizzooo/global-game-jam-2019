@@ -4,7 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 var life_timer = 0
-export var life_time = 0.5
+export var life_time = 0.2
 export var BULLET_SPEED = 100
 var direction
 
