@@ -25,13 +25,18 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="KinematicBody2D"]
+[node name="RollingPlayer" type="Area2D" index="0"]
 
 position = Vector2( 150, 50 )
 input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 collision_layer = 16
 collision_mask = 12
-collision/safe_margin = 0.08
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
@@ -82,7 +87,6 @@ autostart = false
 
 [node name="Pivot" type="Position2D" parent="." index="4"]
 
-position = Vector2( -1.61761, 1.61749 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -91,7 +95,6 @@ __meta__ = {
 
 [node name="CameraOffset" type="Position2D" parent="Pivot" index="0"]
 
-position = Vector2( 50, 0.207691 )
 scale = Vector2( 0.835515, 1.22187 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 

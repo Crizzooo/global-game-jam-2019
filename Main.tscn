@@ -11,7 +11,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.231, 9.44193 )
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -25,6 +25,7 @@ position = Vector2( 345.176, 326.142 )
 speed = 500
 roll_speed = 800
 cursor_radius = 200.0
+pawn_tag = 0
 
 [node name="Level" type="Area2D" parent="." index="2"]
 
