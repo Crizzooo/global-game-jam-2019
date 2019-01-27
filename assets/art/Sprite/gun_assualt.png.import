@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_walk_left_000.png-d3576c1d65327b15ab3eee330ab16f68.stex"
+path="res://.import/gun_assualt.png-3ea35193519ef73660d574fbf79df0a4.stex"
 
 [deps]
 
-source_file="res://assets/art/sprite/player_walk_left_000.png"
-dest_files=[ "res://.import/player_walk_left_000.png-d3576c1d65327b15ab3eee330ab16f68.stex" ]
+source_file="res://assets/art/sprite/gun_assualt.png"
+dest_files=[ "res://.import/gun_assualt.png-3ea35193519ef73660d574fbf79df0a4.stex" ]
 
 [params]
 

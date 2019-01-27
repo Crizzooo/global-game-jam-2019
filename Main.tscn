@@ -19,6 +19,7 @@ position = Vector2( 345.176, 326.142 )
 speed = 500
 roll_speed = 800
 cursor_radius = 200.0
+maxHP = 10
 
 [node name="Level" type="Area2D" parent="." index="1"]
 

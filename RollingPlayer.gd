@@ -7,6 +7,7 @@ export (float) var roll_delay
 export (bool) var allow_controller
 export (float) var controller_deadzone
 export (float) var cursor_radius
+export (int) var maxHP = 10
 
 var screensize
 
@@ -18,6 +19,7 @@ var roll_velocity = null
 var collision_bounds_set = false
 var bounds
 var look_direction = Vector2()
+var hp
 
 
 func _ready():
@@ -34,6 +36,9 @@ func _ready():
 	is_rolling = false
 	
 	look_direction = position + Vector2(1, 0) * cursor_radius
+	self.add_child($Weapon)
+	hp = maxHP
+
 
 func set_bounds(bounds_vector):
 	collision_bounds_set = true
@@ -44,6 +49,8 @@ func set_bounds(bounds_vector):
 	$"Pivot/CameraOffset/Camera2D".limit_bottom = bounds.y
 
 func _process(delta):
+	if hp <= 0:
+		print("game over")
 
 	var velocity = Vector2()
 
@@ -66,6 +73,7 @@ func _process(delta):
 		$Weapon.fire_bullet(global_position, cursor_pos)
 
 	look_direction = velocity
+	$Weapon.rotation = Vector2(-1,0).angle_to($Cursor.position)
 
 	# if directions are given
 	if velocity.length() > 0 && !is_rolling:
@@ -90,9 +98,11 @@ func _process(delta):
 		position += velocity * delta
 
 	if velocity.x > 0:
-		$AnimatedSprite.flip_h = true
+		scale.x = -1
+		#$AnimatedSprite.flip_h = true
 	if velocity.x < 0:
-		$AnimatedSprite.flip_h = false
+		scale.x = 1
+		#$AnimatedSprite.flip_h = false
 
 	if collision_bounds_set:
 		position.x = clamp(position.x, 0, bounds.x)
@@ -104,8 +114,9 @@ func _process(delta):
 		look_direction =  get_global_mouse_position() - global_position
 		look_direction = look_direction.clamped(cursor_radius)
 
-	if !(look_direction.x == 0 and look_direction.y == 0):
-        $Cursor.set_position(look_direction)
+	#if !(look_direction.x == 0 and look_direction.y == 0):
+     #   $Cursor.set_position(look_direction)
+	$Cursor.global_position = get_global_mouse_position()
 
 
 

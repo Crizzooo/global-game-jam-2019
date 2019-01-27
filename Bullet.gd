@@ -3,6 +3,8 @@ extends RigidBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var life_timer = 0
+export var life_time = 0.5
 export var BULLET_SPEED = 100
 var direction
 
@@ -17,4 +19,7 @@ func init_direction(start_position, target_position):
 
 func _process(delta):
 	global_position += direction * delta * BULLET_SPEED
+	life_timer += delta
+	if life_timer > life_time:
+		get_parent().remove_child(self)
 
