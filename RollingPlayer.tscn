@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://RollingPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/sprite/player_walk_left000.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Cursor.gd" type="Script" id=6]
 [ext_resource path="res://Pivot.gd" type="Script" id=7]
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/audio/smg.ogg" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -24,7 +25,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="RollingPlayer" type="Area2D"]
+[node name="RollingPlayer" type="Area2D" index="0"]
 
 position = Vector2( 150, 50 )
 input_pickable = true
@@ -45,7 +46,7 @@ speed = 300
 roll_speed = 750
 roll_time = 0.125
 roll_delay = 0.5
-allow_controller = false
+allow_controller = true
 controller_deadzone = 0.15
 cursor_radius = 0.3
 maxHP = 10
@@ -131,6 +132,17 @@ __meta__ = {
 
 position = Vector2( -0.670822, 26.118 )
 scale = Vector2( 7, 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]
 
