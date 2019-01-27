@@ -24,7 +24,7 @@ custom_solver_bias = 0.0
 radius = 27.1987
 height = 10.1704
 
-[node name="EnemyPawn" type="Area2D" index="0"]
+[node name="EnemyPawn" type="Area2D"]
 
 position = Vector2( 150, 50 )
 input_pickable = true
@@ -52,7 +52,6 @@ maxHP = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
-position = Vector2( -1.07145, 0.401791 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
 animation = "walk_left"
@@ -70,9 +69,9 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -1.07144, 1.0581 )
 scale = Vector2( 1, 1.05794 )
 shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -86,7 +85,7 @@ autostart = false
 
 [node name="Weapon" parent="." index="4" instance=ExtResource( 7 )]
 
-position = Vector2( -0.670822, 26.118 )
+position = Vector2( 1.2789, 21.102 )
 scale = Vector2( 7, 7 )
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_RollTimer_timeout"]
